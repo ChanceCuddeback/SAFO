@@ -1,4 +1,4 @@
-# Install script for directory: /Users/chance/Projects/Embedded/Zephyr/my_first_app
+# Install script for directory: /Users/chance/Projects/Embedded/Zephyr/SAFO
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/cmake_install.cmake")
+  include("/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/chance/Projects/Embedded/Zephyr/SAFO/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

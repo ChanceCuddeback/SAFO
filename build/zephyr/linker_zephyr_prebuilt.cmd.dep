@@ -1,14 +1,14 @@
 zephyr/linker_zephyr_prebuilt.cmd: \
  /Users/chance/Projects/zephyrproject/zephyr/soc/arm/nordic_nrf/nrf52/linker.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/arch/arm/aarch32/cortex_m/scripts/linker.ld \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/autoconf.h \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/autoconf.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/sections.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/section_tags.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/toolchain.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/toolchain/gcc.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/devicetree.h \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/devicetree_unfixed.h \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/devicetree_fixups.h \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/devicetree_unfixed.h \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/devicetree_fixups.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/sys/util.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/sys/util_macro.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/sys/util_internal.h \
@@ -26,28 +26,28 @@ zephyr/linker_zephyr_prebuilt.cmd: \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/devicetree_regions.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/linker-defs.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/toolchain/common.h \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/offsets.h \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/offsets.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/linker-tool.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/linker-tool-gcc.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/sys/mem_manage.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/rel-sections.ld \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/snippets-rom-start.ld \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/snippets-rom-start.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/../arch/common/rom_start_offset.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/../arch/arm/core/aarch32/vector_table.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/../arch/arm/core/aarch32/cortex_m/vector_table_pad.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/kobject-text.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/common-rom.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/thread-local-storage.ld \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/snippets-rodata.ld \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/snippets-rodata.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/kobject-rom.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/cplusplus-rom.ld \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/snippets-ram-sections.ld \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/snippets-ram-sections.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/../arch/common/ramfunc.ld \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/snippets-rwdata.ld \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/snippets-rwdata.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/common-ram.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/kobject-data.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/cplusplus-ram.ld \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/snippets-noinit.ld \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/include/generated/snippets-sections.ld \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/snippets-noinit.ld \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/snippets-sections.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/intlist.ld \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/debug-sections.ld

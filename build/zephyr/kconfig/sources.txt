@@ -1,9 +1,9 @@
-/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/Kconfig/Kconfig.modules
-/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/Kconfig/Kconfig.shield
-/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/Kconfig/Kconfig.shield.defconfig
-/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/Kconfig/Kconfig.soc
-/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/Kconfig/Kconfig.soc.arch
-/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/Kconfig/Kconfig.soc.defconfig
+/Users/chance/Projects/Embedded/Zephyr/SAFO/build/Kconfig/Kconfig.modules
+/Users/chance/Projects/Embedded/Zephyr/SAFO/build/Kconfig/Kconfig.shield
+/Users/chance/Projects/Embedded/Zephyr/SAFO/build/Kconfig/Kconfig.shield.defconfig
+/Users/chance/Projects/Embedded/Zephyr/SAFO/build/Kconfig/Kconfig.soc
+/Users/chance/Projects/Embedded/Zephyr/SAFO/build/Kconfig/Kconfig.soc.arch
+/Users/chance/Projects/Embedded/Zephyr/SAFO/build/Kconfig/Kconfig.soc.defconfig
 /Users/chance/Projects/zephyrproject/modules/audio/sof/Kconfig.sof
 /Users/chance/Projects/zephyrproject/modules/audio/sof/src/Kconfig
 /Users/chance/Projects/zephyrproject/modules/audio/sof/src/arch/Kconfig

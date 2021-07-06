@@ -10,4 +10,4 @@ empty_file.o: \
  /Users/chance/Projects/zephyrproject/zephyr/include/dt-bindings/i2c/i2c.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/dt-bindings/gpio/gpio.h \
  /Users/chance/Projects/zephyrproject/zephyr/dts/arm/nordic/override.dtsi \
- /Users/chance/Projects/Embedded/Zephyr/my_first_app/boards/arduino_nano_33_ble.overlay
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/boards/arduino_nano_33_ble.overlay

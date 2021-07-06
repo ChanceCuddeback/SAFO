@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/modules/ti/simplelink/cmake_install.cmake")
+  include("/Users/chance/Projects/Embedded/Zephyr/SAFO/build/modules/ti/simplelink/cmake_install.cmake")
 
 endif()
 

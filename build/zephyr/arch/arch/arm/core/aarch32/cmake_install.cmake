@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/arch/arch/arm/core/aarch32/cortex_m/cmake_install.cmake")
-  include("/Users/chance/Projects/Embedded/Zephyr/my_first_app/build/zephyr/arch/arch/arm/core/aarch32/mpu/cmake_install.cmake")
+  include("/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/arch/arch/arm/core/aarch32/cortex_m/cmake_install.cmake")
+  include("/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/arch/arch/arm/core/aarch32/mpu/cmake_install.cmake")
 
 endif()
 
