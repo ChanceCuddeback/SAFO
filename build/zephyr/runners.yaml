@@ -1,0 +1,22 @@
+# Available runners configured by board.cmake.
+runners:
+- bossac
+
+# Default flash runner if --runner is not given.
+flash-runner: bossac
+
+# Common runner configuration values.
+config:
+  board_dir: /Users/chance/Projects/zephyrproject/zephyr/boards/arm/arduino_nano_33_ble
+  # Build outputs:
+  elf_file: zephyr.elf
+  hex_file: zephyr.hex
+  bin_file: zephyr.bin
+  # Host tools:
+  gdb: /Applications/ARM/bin/arm-none-eabi-gdb
+
+# Runner specific arguments
+args:
+  bossac:
+    []
+
