@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline const struct device * uart_mux_find(int dlci_address)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (const struct device *) arch_syscall_invoke1(*(uintptr_t *)&dlci_address, K_SYSCALL_UART_MUX_FIND);
 	}
 #endif

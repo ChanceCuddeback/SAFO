@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int spi_transceive(const struct device * dev, const struct spi_con
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&config, *(uintptr_t *)&tx_bufs, *(uintptr_t *)&rx_bufs, K_SYSCALL_SPI_TRANSCEIVE);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int spi_release(const struct device * dev, const struct spi_config
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&config, K_SYSCALL_SPI_RELEASE);
 	}
 #endif

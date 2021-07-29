@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int espi_config(const struct device * dev, struct espi_cfg * cfg)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&cfg, K_SYSCALL_ESPI_CONFIG);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline bool espi_get_channel_status(const struct device * dev, enum espi_
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&ch, K_SYSCALL_ESPI_GET_CHANNEL_STATUS);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline int espi_read_request(const struct device * dev, struct espi_reque
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&req, K_SYSCALL_ESPI_READ_REQUEST);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int espi_write_request(const struct device * dev, struct espi_requ
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&req, K_SYSCALL_ESPI_WRITE_REQUEST);
 	}
 #endif
@@ -78,6 +85,7 @@ static inline int espi_read_lpc_request(const struct device * dev, enum lpc_peri
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&op, *(uintptr_t *)&data, K_SYSCALL_ESPI_READ_LPC_REQUEST);
 	}
 #endif
@@ -91,6 +99,7 @@ static inline int espi_write_lpc_request(const struct device * dev, enum lpc_per
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&op, *(uintptr_t *)&data, K_SYSCALL_ESPI_WRITE_LPC_REQUEST);
 	}
 #endif
@@ -104,6 +113,7 @@ static inline int espi_send_vwire(const struct device * dev, enum espi_vwire_sig
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&signal, *(uintptr_t *)&level, K_SYSCALL_ESPI_SEND_VWIRE);
 	}
 #endif
@@ -117,6 +127,7 @@ static inline int espi_receive_vwire(const struct device * dev, enum espi_vwire_
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&signal, *(uintptr_t *)&level, K_SYSCALL_ESPI_RECEIVE_VWIRE);
 	}
 #endif
@@ -130,6 +141,7 @@ static inline int espi_send_oob(const struct device * dev, struct espi_oob_packe
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&pckt, K_SYSCALL_ESPI_SEND_OOB);
 	}
 #endif
@@ -143,6 +155,7 @@ static inline int espi_receive_oob(const struct device * dev, struct espi_oob_pa
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&pckt, K_SYSCALL_ESPI_RECEIVE_OOB);
 	}
 #endif
@@ -156,6 +169,7 @@ static inline int espi_read_flash(const struct device * dev, struct espi_flash_p
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&pckt, K_SYSCALL_ESPI_READ_FLASH);
 	}
 #endif
@@ -169,6 +183,7 @@ static inline int espi_write_flash(const struct device * dev, struct espi_flash_
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&pckt, K_SYSCALL_ESPI_WRITE_FLASH);
 	}
 #endif
@@ -182,6 +197,7 @@ static inline int espi_flash_erase(const struct device * dev, struct espi_flash_
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&pckt, K_SYSCALL_ESPI_FLASH_ERASE);
 	}
 #endif

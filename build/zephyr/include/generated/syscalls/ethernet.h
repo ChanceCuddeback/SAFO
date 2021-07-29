@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline const struct device * net_eth_get_ptp_clock_by_index(int index)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (const struct device *) arch_syscall_invoke1(*(uintptr_t *)&index, K_SYSCALL_NET_ETH_GET_PTP_CLOCK_BY_INDEX);
 	}
 #endif

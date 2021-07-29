@@ -1,6 +1,24 @@
+menu "CANopenNode (/Users/chance/Projects/zephyrproject/modules/lib/canopennode)"
+osource "$(ZEPHYR_CANOPENNODE_KCONFIG)"
+config ZEPHYR_CANOPENNODE_MODULE
+	bool
+	default y
+endmenu
 menu "hal_nordic (/Users/chance/Projects/zephyrproject/modules/hal/nordic)"
 osource "$(ZEPHYR_HAL_NORDIC_KCONFIG)"
 config ZEPHYR_HAL_NORDIC_MODULE
+	bool
+	default y
+endmenu
+menu "loramac-node (/Users/chance/Projects/zephyrproject/modules/lib/loramac-node)"
+osource "$(ZEPHYR_LORAMAC_NODE_KCONFIG)"
+config ZEPHYR_LORAMAC_NODE_MODULE
+	bool
+	default y
+endmenu
+menu "lz4 (/Users/chance/Projects/zephyrproject/modules/lib/lz4)"
+osource "$(ZEPHYR_LZ4_KCONFIG)"
+config ZEPHYR_LZ4_MODULE
 	bool
 	default y
 endmenu
@@ -10,9 +28,21 @@ config ZEPHYR_MBEDTLS_MODULE
 	bool
 	default y
 endmenu
+menu "nanopb (/Users/chance/Projects/zephyrproject/modules/lib/nanopb)"
+osource "$(ZEPHYR_NANOPB_KCONFIG)"
+config ZEPHYR_NANOPB_MODULE
+	bool
+	default y
+endmenu
 menu "sof (/Users/chance/Projects/zephyrproject/modules/audio/sof)"
 osource "/Users/chance/Projects/zephyrproject/modules/audio/sof/zephyr/Kconfig"
 config ZEPHYR_SOF_MODULE
+	bool
+	default y
+endmenu
+menu "tensorflow (/Users/chance/Projects/zephyrproject/modules/lib/tensorflow)"
+osource "$(ZEPHYR_TENSORFLOW_KCONFIG)"
+config ZEPHYR_TENSORFLOW_MODULE
 	bool
 	default y
 endmenu
@@ -25,18 +55,6 @@ endmenu
 menu "trusted-firmware-m (/Users/chance/Projects/zephyrproject/modules/tee/tfm)"
 osource "$(ZEPHYR_TRUSTED_FIRMWARE_M_KCONFIG)"
 config ZEPHYR_TRUSTED_FIRMWARE_M_MODULE
-	bool
-	default y
-endmenu
-menu "nanopb (/Users/chance/Projects/zephyrproject/modules/lib/nanopb)"
-osource "$(ZEPHYR_NANOPB_KCONFIG)"
-config ZEPHYR_NANOPB_MODULE
-	bool
-	default y
-endmenu
-menu "tensorflow (/Users/chance/Projects/zephyrproject/modules/lib/tensorflow)"
-osource "$(ZEPHYR_TENSORFLOW_KCONFIG)"
-config ZEPHYR_TENSORFLOW_MODULE
 	bool
 	default y
 endmenu

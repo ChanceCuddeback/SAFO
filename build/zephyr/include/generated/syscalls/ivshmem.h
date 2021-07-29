@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline size_t ivshmem_get_mem(const struct device * dev, uintptr_t * memm
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (size_t) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&memmap, K_SYSCALL_IVSHMEM_GET_MEM);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline uint32_t ivshmem_get_id(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (uint32_t) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_IVSHMEM_GET_ID);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline uint16_t ivshmem_get_vectors(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (uint16_t) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_IVSHMEM_GET_VECTORS);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int ivshmem_int_peer(const struct device * dev, uint32_t peer_id, 
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&peer_id, *(uintptr_t *)&vector, K_SYSCALL_IVSHMEM_INT_PEER);
 	}
 #endif
@@ -78,6 +85,7 @@ static inline int ivshmem_register_handler(const struct device * dev, struct k_p
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&signal, *(uintptr_t *)&vector, K_SYSCALL_IVSHMEM_REGISTER_HANDLER);
 	}
 #endif

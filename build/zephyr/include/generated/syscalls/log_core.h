@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline void z_log_string_from_user(uint32_t src_level_val, const char * s
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke2(*(uintptr_t *)&src_level_val, *(uintptr_t *)&str, K_SYSCALL_Z_LOG_STRING_FROM_USER);
 		return;
 	}
@@ -40,6 +44,7 @@ static inline void z_log_hexdump_from_user(uint32_t src_level_val, const char * 
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke4(*(uintptr_t *)&src_level_val, *(uintptr_t *)&metadata, *(uintptr_t *)&data, *(uintptr_t *)&len, K_SYSCALL_Z_LOG_HEXDUMP_FROM_USER);
 		return;
 	}

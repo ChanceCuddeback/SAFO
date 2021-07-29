@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int net_addr_pton(sa_family_t family, const char * src, void * dst
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&family, *(uintptr_t *)&src, *(uintptr_t *)&dst, K_SYSCALL_NET_ADDR_PTON);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline char * net_addr_ntop(sa_family_t family, const void * src, char * 
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (char *) arch_syscall_invoke4(*(uintptr_t *)&family, *(uintptr_t *)&src, *(uintptr_t *)&dst, *(uintptr_t *)&size, K_SYSCALL_NET_ADDR_NTOP);
 	}
 #endif

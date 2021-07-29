@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int i2c_configure(const struct device * dev, uint32_t dev_config)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&dev_config, K_SYSCALL_I2C_CONFIGURE);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int i2c_transfer(const struct device * dev, struct i2c_msg * msgs,
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&msgs, *(uintptr_t *)&num_msgs, *(uintptr_t *)&addr, K_SYSCALL_I2C_TRANSFER);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline int i2c_recover_bus(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_I2C_RECOVER_BUS);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int i2c_slave_driver_register(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_I2C_SLAVE_DRIVER_REGISTER);
 	}
 #endif
@@ -78,6 +85,7 @@ static inline int i2c_slave_driver_unregister(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_I2C_SLAVE_DRIVER_UNREGISTER);
 	}
 #endif

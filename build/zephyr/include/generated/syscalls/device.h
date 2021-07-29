@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline const struct device * device_get_binding(const char * name)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (const struct device *) arch_syscall_invoke1(*(uintptr_t *)&name, K_SYSCALL_DEVICE_GET_BINDING);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int device_usable_check(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_DEVICE_USABLE_CHECK);
 	}
 #endif

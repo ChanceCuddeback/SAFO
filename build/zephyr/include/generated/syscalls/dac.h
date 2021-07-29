@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int dac_channel_setup(const struct device * dev, const struct dac_
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&channel_cfg, K_SYSCALL_DAC_CHANNEL_SETUP);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int dac_write_value(const struct device * dev, uint8_t channel, ui
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&channel, *(uintptr_t *)&value, K_SYSCALL_DAC_WRITE_VALUE);
 	}
 #endif

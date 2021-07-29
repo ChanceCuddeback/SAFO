@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline void k_mem_paging_stats_get(struct k_mem_paging_stats_t * stats)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&stats, K_SYSCALL_K_MEM_PAGING_STATS_GET);
 		return;
 	}
@@ -40,6 +44,7 @@ static inline void k_mem_paging_thread_stats_get(struct k_thread * thread, struc
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke2(*(uintptr_t *)&thread, *(uintptr_t *)&stats, K_SYSCALL_K_MEM_PAGING_THREAD_STATS_GET);
 		return;
 	}
@@ -54,6 +59,7 @@ static inline void k_mem_paging_histogram_eviction_get(struct k_mem_paging_histo
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&hist, K_SYSCALL_K_MEM_PAGING_HISTOGRAM_EVICTION_GET);
 		return;
 	}
@@ -68,6 +74,7 @@ static inline void k_mem_paging_histogram_backing_store_page_in_get(struct k_mem
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&hist, K_SYSCALL_K_MEM_PAGING_HISTOGRAM_BACKING_STORE_PAGE_IN_GET);
 		return;
 	}
@@ -82,6 +89,7 @@ static inline void k_mem_paging_histogram_backing_store_page_out_get(struct k_me
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&hist, K_SYSCALL_K_MEM_PAGING_HISTOGRAM_BACKING_STORE_PAGE_OUT_GET);
 		return;
 	}

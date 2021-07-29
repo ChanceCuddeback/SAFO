@@ -1,5 +1,6 @@
 zephyr/linker_zephyr_prebuilt.cmd: \
  /Users/chance/Projects/zephyrproject/zephyr/soc/arm/nordic_nrf/nrf52/linker.ld \
+ /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/autoconf.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/arch/arm/aarch32/cortex_m/scripts/linker.ld \
  /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/autoconf.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/sections.h \
@@ -27,6 +28,7 @@ zephyr/linker_zephyr_prebuilt.cmd: \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/linker-defs.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/toolchain/common.h \
  /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/include/generated/offsets.h \
+ /Users/chance/Projects/zephyrproject/zephyr/include/linker/devicetree_reserved.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/linker-tool.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/linker/linker-tool-gcc.h \
  /Users/chance/Projects/zephyrproject/zephyr/include/sys/mem_manage.h \

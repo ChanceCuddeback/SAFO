@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int uart_tx(const struct device * dev, const uint8_t * buf, size_t
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&buf, *(uintptr_t *)&len, *(uintptr_t *)&timeout, K_SYSCALL_UART_TX);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int uart_tx_abort(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_TX_ABORT);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline int uart_rx_enable(const struct device * dev, uint8_t * buf, size_
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&buf, *(uintptr_t *)&len, *(uintptr_t *)&timeout, K_SYSCALL_UART_RX_ENABLE);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int uart_rx_disable(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_RX_DISABLE);
 	}
 #endif
@@ -78,6 +85,7 @@ static inline int uart_err_check(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_ERR_CHECK);
 	}
 #endif
@@ -91,6 +99,7 @@ static inline int uart_poll_in(const struct device * dev, unsigned char * p_char
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&p_char, K_SYSCALL_UART_POLL_IN);
 	}
 #endif
@@ -104,6 +113,7 @@ static inline void uart_poll_out(const struct device * dev, unsigned char out_ch
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&out_char, K_SYSCALL_UART_POLL_OUT);
 		return;
 	}
@@ -118,6 +128,7 @@ static inline int uart_configure(const struct device * dev, const struct uart_co
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&cfg, K_SYSCALL_UART_CONFIGURE);
 	}
 #endif
@@ -131,6 +142,7 @@ static inline int uart_config_get(const struct device * dev, struct uart_config 
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&cfg, K_SYSCALL_UART_CONFIG_GET);
 	}
 #endif
@@ -144,6 +156,7 @@ static inline void uart_irq_tx_enable(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_IRQ_TX_ENABLE);
 		return;
 	}
@@ -158,6 +171,7 @@ static inline void uart_irq_tx_disable(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_IRQ_TX_DISABLE);
 		return;
 	}
@@ -172,6 +186,7 @@ static inline void uart_irq_rx_enable(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_IRQ_RX_ENABLE);
 		return;
 	}
@@ -186,6 +201,7 @@ static inline void uart_irq_rx_disable(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_IRQ_RX_DISABLE);
 		return;
 	}
@@ -200,6 +216,7 @@ static inline void uart_irq_err_enable(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_IRQ_ERR_ENABLE);
 		return;
 	}
@@ -214,6 +231,7 @@ static inline void uart_irq_err_disable(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_IRQ_ERR_DISABLE);
 		return;
 	}
@@ -228,6 +246,7 @@ static inline int uart_irq_is_pending(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_IRQ_IS_PENDING);
 	}
 #endif
@@ -241,6 +260,7 @@ static inline int uart_irq_update(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_UART_IRQ_UPDATE);
 	}
 #endif
@@ -254,6 +274,7 @@ static inline int uart_line_ctrl_set(const struct device * dev, uint32_t ctrl, u
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&ctrl, *(uintptr_t *)&val, K_SYSCALL_UART_LINE_CTRL_SET);
 	}
 #endif
@@ -267,6 +288,7 @@ static inline int uart_line_ctrl_get(const struct device * dev, uint32_t ctrl, u
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&ctrl, *(uintptr_t *)&val, K_SYSCALL_UART_LINE_CTRL_GET);
 	}
 #endif
@@ -280,6 +302,7 @@ static inline int uart_drv_cmd(const struct device * dev, uint32_t cmd, uint32_t
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&cmd, *(uintptr_t *)&p, K_SYSCALL_UART_DRV_CMD);
 	}
 #endif

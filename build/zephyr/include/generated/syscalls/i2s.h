@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int i2s_configure(const struct device * dev, enum i2s_dir dir, con
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&dir, *(uintptr_t *)&cfg, K_SYSCALL_I2S_CONFIGURE);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int i2s_buf_read(const struct device * dev, void * buf, size_t * s
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&buf, *(uintptr_t *)&size, K_SYSCALL_I2S_BUF_READ);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline int i2s_buf_write(const struct device * dev, void * buf, size_t si
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&buf, *(uintptr_t *)&size, K_SYSCALL_I2S_BUF_WRITE);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int i2s_trigger(const struct device * dev, enum i2s_dir dir, enum 
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&dir, *(uintptr_t *)&cmd, K_SYSCALL_I2S_TRIGGER);
 	}
 #endif

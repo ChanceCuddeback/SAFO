@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -28,6 +31,7 @@ static inline int z_sys_mutex_kernel_lock(struct sys_mutex * mutex, k_timeout_t 
 	if (z_syscall_trap()) {
 		union { struct { uintptr_t lo, hi; } split; k_timeout_t val; } parm0;
 		parm0.val = timeout;
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&mutex, parm0.split.lo, parm0.split.hi, K_SYSCALL_Z_SYS_MUTEX_KERNEL_LOCK);
 	}
 #endif
@@ -41,6 +45,7 @@ static inline int z_sys_mutex_kernel_unlock(struct sys_mutex * mutex)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&mutex, K_SYSCALL_Z_SYS_MUTEX_KERNEL_UNLOCK);
 	}
 #endif

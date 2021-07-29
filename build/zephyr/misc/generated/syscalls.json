@@ -1156,6 +1156,27 @@
     ],
     [
         [
+            "int hwinfo_get_reset_cause",
+            "uint32_t *cause"
+        ],
+        "hwinfo.h"
+    ],
+    [
+        [
+            "int hwinfo_clear_reset_cause",
+            "void"
+        ],
+        "hwinfo.h"
+    ],
+    [
+        [
+            "int hwinfo_get_supported_reset_cause",
+            "uint32_t *supported"
+        ],
+        "hwinfo.h"
+    ],
+    [
+        [
             "int i2c_configure",
             "const struct device *dev, uint32_t dev_config"
         ],
@@ -1972,6 +1993,13 @@
             "const char *host,\n\t\t\t\t\t   const char *service,\n\t\t\t\t\t   const struct zsock_addrinfo *hints,\n\t\t\t\t\t   struct zsock_addrinfo *res"
         ],
         "socket.h"
+    ],
+    [
+        [
+            "int zsock_select",
+            "int nfds, zsock_fd_set *readfds,\n\t\t\t   zsock_fd_set *writefds,\n\t\t\t   zsock_fd_set *exceptfds,\n\t\t\t   struct zsock_timeval *timeout"
+        ],
+        "socket_select.h"
     ],
     [
         [

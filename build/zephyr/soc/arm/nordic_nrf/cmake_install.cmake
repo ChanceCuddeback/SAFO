@@ -40,6 +40,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/soc/arm/nordic_nrf/nrf52/cmake_install.cmake")
+  include("/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/soc/arm/nordic_nrf/common/cmake_install.cmake")
 
 endif()
 

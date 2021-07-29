@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline bool atomic_cas(atomic_t * target, atomic_val_t old_value, atomic_
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke3(*(uintptr_t *)&target, *(uintptr_t *)&old_value, *(uintptr_t *)&new_value, K_SYSCALL_ATOMIC_CAS);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline bool atomic_ptr_cas(atomic_ptr_t * target, atomic_ptr_val_t old_va
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke3(*(uintptr_t *)&target, *(uintptr_t *)&old_value, *(uintptr_t *)&new_value, K_SYSCALL_ATOMIC_PTR_CAS);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline atomic_val_t atomic_add(atomic_t * target, atomic_val_t value)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (atomic_val_t) arch_syscall_invoke2(*(uintptr_t *)&target, *(uintptr_t *)&value, K_SYSCALL_ATOMIC_ADD);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline atomic_val_t atomic_sub(atomic_t * target, atomic_val_t value)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (atomic_val_t) arch_syscall_invoke2(*(uintptr_t *)&target, *(uintptr_t *)&value, K_SYSCALL_ATOMIC_SUB);
 	}
 #endif
@@ -78,6 +85,7 @@ static inline atomic_val_t atomic_set(atomic_t * target, atomic_val_t value)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (atomic_val_t) arch_syscall_invoke2(*(uintptr_t *)&target, *(uintptr_t *)&value, K_SYSCALL_ATOMIC_SET);
 	}
 #endif
@@ -91,6 +99,7 @@ static inline atomic_ptr_val_t atomic_ptr_set(atomic_ptr_t * target, atomic_ptr_
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (atomic_ptr_val_t) arch_syscall_invoke2(*(uintptr_t *)&target, *(uintptr_t *)&value, K_SYSCALL_ATOMIC_PTR_SET);
 	}
 #endif
@@ -104,6 +113,7 @@ static inline atomic_val_t atomic_or(atomic_t * target, atomic_val_t value)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (atomic_val_t) arch_syscall_invoke2(*(uintptr_t *)&target, *(uintptr_t *)&value, K_SYSCALL_ATOMIC_OR);
 	}
 #endif
@@ -117,6 +127,7 @@ static inline atomic_val_t atomic_xor(atomic_t * target, atomic_val_t value)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (atomic_val_t) arch_syscall_invoke2(*(uintptr_t *)&target, *(uintptr_t *)&value, K_SYSCALL_ATOMIC_XOR);
 	}
 #endif
@@ -130,6 +141,7 @@ static inline atomic_val_t atomic_and(atomic_t * target, atomic_val_t value)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (atomic_val_t) arch_syscall_invoke2(*(uintptr_t *)&target, *(uintptr_t *)&value, K_SYSCALL_ATOMIC_AND);
 	}
 #endif
@@ -143,6 +155,7 @@ static inline atomic_val_t atomic_nand(atomic_t * target, atomic_val_t value)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (atomic_val_t) arch_syscall_invoke2(*(uintptr_t *)&target, *(uintptr_t *)&value, K_SYSCALL_ATOMIC_NAND);
 	}
 #endif

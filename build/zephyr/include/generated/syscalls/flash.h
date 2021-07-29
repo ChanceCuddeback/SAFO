@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int flash_read(const struct device * dev, off_t offset, void * dat
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&offset, *(uintptr_t *)&data, *(uintptr_t *)&len, K_SYSCALL_FLASH_READ);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int flash_write(const struct device * dev, off_t offset, const voi
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&offset, *(uintptr_t *)&data, *(uintptr_t *)&len, K_SYSCALL_FLASH_WRITE);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline int flash_erase(const struct device * dev, off_t offset, size_t si
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&offset, *(uintptr_t *)&size, K_SYSCALL_FLASH_ERASE);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int flash_write_protection_set(const struct device * dev, bool ena
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&enable, K_SYSCALL_FLASH_WRITE_PROTECTION_SET);
 	}
 #endif
@@ -78,6 +85,7 @@ static inline int flash_get_page_info_by_offs(const struct device * dev, off_t o
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&offset, *(uintptr_t *)&info, K_SYSCALL_FLASH_GET_PAGE_INFO_BY_OFFS);
 	}
 #endif
@@ -91,6 +99,7 @@ static inline int flash_get_page_info_by_idx(const struct device * dev, uint32_t
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&page_index, *(uintptr_t *)&info, K_SYSCALL_FLASH_GET_PAGE_INFO_BY_IDX);
 	}
 #endif
@@ -104,6 +113,7 @@ static inline size_t flash_get_page_count(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (size_t) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_FLASH_GET_PAGE_COUNT);
 	}
 #endif
@@ -117,6 +127,7 @@ static inline int flash_sfdp_read(const struct device * dev, off_t offset, void 
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&offset, *(uintptr_t *)&data, *(uintptr_t *)&len, K_SYSCALL_FLASH_SFDP_READ);
 	}
 #endif
@@ -130,6 +141,7 @@ static inline int flash_read_jedec_id(const struct device * dev, uint8_t * id)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&id, K_SYSCALL_FLASH_READ_JEDEC_ID);
 	}
 #endif
@@ -143,6 +155,7 @@ static inline size_t flash_get_write_block_size(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (size_t) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_FLASH_GET_WRITE_BLOCK_SIZE);
 	}
 #endif
@@ -156,6 +169,7 @@ static inline const struct flash_parameters * flash_get_parameters(const struct 
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (const struct flash_parameters *) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_FLASH_GET_PARAMETERS);
 	}
 #endif

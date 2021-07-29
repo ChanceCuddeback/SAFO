@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int sensor_attr_set(const struct device * dev, enum sensor_channel
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&chan, *(uintptr_t *)&attr, *(uintptr_t *)&val, K_SYSCALL_SENSOR_ATTR_SET);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int sensor_attr_get(const struct device * dev, enum sensor_channel
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&chan, *(uintptr_t *)&attr, *(uintptr_t *)&val, K_SYSCALL_SENSOR_ATTR_GET);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline int sensor_sample_fetch(const struct device * dev)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&dev, K_SYSCALL_SENSOR_SAMPLE_FETCH);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int sensor_sample_fetch_chan(const struct device * dev, enum senso
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&type, K_SYSCALL_SENSOR_SAMPLE_FETCH_CHAN);
 	}
 #endif
@@ -78,6 +85,7 @@ static inline int sensor_channel_get(const struct device * dev, enum sensor_chan
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&chan, *(uintptr_t *)&val, K_SYSCALL_SENSOR_CHANNEL_GET);
 	}
 #endif

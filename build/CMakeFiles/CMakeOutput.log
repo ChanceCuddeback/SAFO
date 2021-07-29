@@ -1,4 +1,4 @@
-The target system is: Generic - 2.6.0 - arm
+The target system is: Generic - 2.6.99 - arm
 The host system is: Darwin - 20.5.0 - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /Applications/ARM/bin/arm-none-eabi-gcc 

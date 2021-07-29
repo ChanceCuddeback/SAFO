@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int led_blink(const struct device * dev, uint32_t led, uint32_t de
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&led, *(uintptr_t *)&delay_on, *(uintptr_t *)&delay_off, K_SYSCALL_LED_BLINK);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int led_get_info(const struct device * dev, uint32_t led, const st
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&led, *(uintptr_t *)&info, K_SYSCALL_LED_GET_INFO);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline int led_set_brightness(const struct device * dev, uint32_t led, ui
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&led, *(uintptr_t *)&value, K_SYSCALL_LED_SET_BRIGHTNESS);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int led_write_channels(const struct device * dev, uint32_t start_c
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&start_channel, *(uintptr_t *)&num_channels, *(uintptr_t *)&buf, K_SYSCALL_LED_WRITE_CHANNELS);
 	}
 #endif
@@ -78,6 +85,7 @@ static inline int led_set_channel(const struct device * dev, uint32_t channel, u
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&channel, *(uintptr_t *)&value, K_SYSCALL_LED_SET_CHANNEL);
 	}
 #endif
@@ -91,6 +99,7 @@ static inline int led_set_color(const struct device * dev, uint32_t led, uint8_t
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke4(*(uintptr_t *)&dev, *(uintptr_t *)&led, *(uintptr_t *)&num_colors, *(uintptr_t *)&color, K_SYSCALL_LED_SET_COLOR);
 	}
 #endif
@@ -104,6 +113,7 @@ static inline int led_on(const struct device * dev, uint32_t led)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&led, K_SYSCALL_LED_ON);
 	}
 #endif
@@ -117,6 +127,7 @@ static inline int led_off(const struct device * dev, uint32_t led)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&led, K_SYSCALL_LED_OFF);
 	}
 #endif

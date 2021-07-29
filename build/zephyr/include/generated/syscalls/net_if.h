@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int net_if_ipv6_addr_lookup_by_index(const struct in6_addr * addr)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&addr, K_SYSCALL_NET_IF_IPV6_ADDR_LOOKUP_BY_INDEX);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline bool net_if_ipv6_addr_add_by_index(int index, struct in6_addr * ad
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke4(*(uintptr_t *)&index, *(uintptr_t *)&addr, *(uintptr_t *)&addr_type, *(uintptr_t *)&vlifetime, K_SYSCALL_NET_IF_IPV6_ADDR_ADD_BY_INDEX);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline bool net_if_ipv6_addr_rm_by_index(int index, const struct in6_addr
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke2(*(uintptr_t *)&index, *(uintptr_t *)&addr, K_SYSCALL_NET_IF_IPV6_ADDR_RM_BY_INDEX);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int net_if_ipv4_addr_lookup_by_index(const struct in_addr * addr)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&addr, K_SYSCALL_NET_IF_IPV4_ADDR_LOOKUP_BY_INDEX);
 	}
 #endif
@@ -78,6 +85,7 @@ static inline bool net_if_ipv4_addr_add_by_index(int index, struct in_addr * add
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke4(*(uintptr_t *)&index, *(uintptr_t *)&addr, *(uintptr_t *)&addr_type, *(uintptr_t *)&vlifetime, K_SYSCALL_NET_IF_IPV4_ADDR_ADD_BY_INDEX);
 	}
 #endif
@@ -91,6 +99,7 @@ static inline bool net_if_ipv4_addr_rm_by_index(int index, const struct in_addr 
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke2(*(uintptr_t *)&index, *(uintptr_t *)&addr, K_SYSCALL_NET_IF_IPV4_ADDR_RM_BY_INDEX);
 	}
 #endif
@@ -104,6 +113,7 @@ static inline bool net_if_ipv4_set_netmask_by_index(int index, const struct in_a
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke2(*(uintptr_t *)&index, *(uintptr_t *)&netmask, K_SYSCALL_NET_IF_IPV4_SET_NETMASK_BY_INDEX);
 	}
 #endif
@@ -117,6 +127,7 @@ static inline bool net_if_ipv4_set_gw_by_index(int index, const struct in_addr *
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke2(*(uintptr_t *)&index, *(uintptr_t *)&gw, K_SYSCALL_NET_IF_IPV4_SET_GW_BY_INDEX);
 	}
 #endif
@@ -130,6 +141,7 @@ static inline struct net_if * net_if_get_by_index(int index)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (struct net_if *) arch_syscall_invoke1(*(uintptr_t *)&index, K_SYSCALL_NET_IF_GET_BY_INDEX);
 	}
 #endif

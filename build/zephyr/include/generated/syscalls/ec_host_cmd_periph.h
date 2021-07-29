@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int ec_host_cmd_periph_init(const struct device * dev, struct ec_h
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&rx_ctx, K_SYSCALL_EC_HOST_CMD_PERIPH_INIT);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int ec_host_cmd_periph_send(const struct device * dev, const struc
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&tx_buf, K_SYSCALL_EC_HOST_CMD_PERIPH_SEND);
 	}
 #endif

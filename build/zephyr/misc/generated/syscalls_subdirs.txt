@@ -101,8 +101,8 @@
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/misc/generated/syscalls_links/include_dt-bindings_clock
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/misc/generated/syscalls_links/include_dt-bindings_dac
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/misc/generated/syscalls_links/include_dt-bindings_display
-/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/misc/generated/syscalls_links/include_dt-bindings_dma
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/misc/generated/syscalls_links/include_dt-bindings_espi
+/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/misc/generated/syscalls_links/include_dt-bindings_ethernet
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/misc/generated/syscalls_links/include_dt-bindings_gpio
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/misc/generated/syscalls_links/include_dt-bindings_i2c
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/misc/generated/syscalls_links/include_dt-bindings_interrupt-controller

@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline void log_panic(void)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke0(K_SYSCALL_LOG_PANIC);
 		return;
 	}
@@ -40,6 +44,7 @@ static inline bool log_process(bool bypass)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (bool) arch_syscall_invoke1(*(uintptr_t *)&bypass, K_SYSCALL_LOG_PROCESS);
 	}
 #endif
@@ -53,6 +58,7 @@ static inline uint32_t log_buffered_cnt(void)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (uint32_t) arch_syscall_invoke0(K_SYSCALL_LOG_BUFFERED_CNT);
 	}
 #endif
@@ -66,6 +72,7 @@ static inline uint32_t log_filter_set(struct log_backend const *const backend, u
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (uint32_t) arch_syscall_invoke4(*(uintptr_t *)&backend, *(uintptr_t *)&domain_id, *(uintptr_t *)&source_id, *(uintptr_t *)&level, K_SYSCALL_LOG_FILTER_SET);
 	}
 #endif

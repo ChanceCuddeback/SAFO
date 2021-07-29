@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline void z_log_msg2_static_create(const void * source, const struct lo
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke4(*(uintptr_t *)&source, *(uintptr_t *)&desc, *(uintptr_t *)&package, *(uintptr_t *)&data, K_SYSCALL_Z_LOG_MSG2_STATIC_CREATE);
 		return;
 	}
@@ -44,6 +48,7 @@ static inline void z_log_msg2_runtime_vcreate(uint8_t domain_id, const void * so
 			*(uintptr_t *)&fmt,
 			*(uintptr_t *)&ap
 		};
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke6(*(uintptr_t *)&domain_id, *(uintptr_t *)&source, *(uintptr_t *)&level, *(uintptr_t *)&data, *(uintptr_t *)&dlen, (uintptr_t) &more, K_SYSCALL_Z_LOG_MSG2_RUNTIME_VCREATE);
 		return;
 	}

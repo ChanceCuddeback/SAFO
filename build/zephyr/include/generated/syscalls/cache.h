@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int sys_cache_data_all(int op)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&op, K_SYSCALL_SYS_CACHE_DATA_ALL);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int sys_cache_data_range(void * addr, size_t size, int op)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&addr, *(uintptr_t *)&size, *(uintptr_t *)&op, K_SYSCALL_SYS_CACHE_DATA_RANGE);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline int sys_cache_instr_all(int op)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke1(*(uintptr_t *)&op, K_SYSCALL_SYS_CACHE_INSTR_ALL);
 	}
 #endif
@@ -65,6 +71,7 @@ static inline int sys_cache_instr_range(void * addr, size_t size, int op)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&addr, *(uintptr_t *)&size, *(uintptr_t *)&op, K_SYSCALL_SYS_CACHE_INSTR_RANGE);
 	}
 #endif

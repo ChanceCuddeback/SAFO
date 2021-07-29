@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline int adc_channel_setup(const struct device * dev, const struct adc_
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&channel_cfg, K_SYSCALL_ADC_CHANNEL_SETUP);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline int adc_read(const struct device * dev, const struct adc_sequence 
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dev, *(uintptr_t *)&sequence, K_SYSCALL_ADC_READ);
 	}
 #endif
@@ -52,6 +57,7 @@ static inline int adc_read_async(const struct device * dev, const struct adc_seq
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke3(*(uintptr_t *)&dev, *(uintptr_t *)&sequence, *(uintptr_t *)&async, K_SYSCALL_ADC_READ_ASYNC);
 	}
 #endif

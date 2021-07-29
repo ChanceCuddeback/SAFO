@@ -15,6 +15,9 @@
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#if !defined(__XCC__)
+#pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
 #endif
 
 #ifdef __cplusplus
@@ -26,6 +29,7 @@ static inline uint32_t sys_rand32_get(void)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (uint32_t) arch_syscall_invoke0(K_SYSCALL_SYS_RAND32_GET);
 	}
 #endif
@@ -39,6 +43,7 @@ static inline void sys_rand_get(void * dst, size_t len)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		arch_syscall_invoke2(*(uintptr_t *)&dst, *(uintptr_t *)&len, K_SYSCALL_SYS_RAND_GET);
 		return;
 	}
@@ -53,6 +58,7 @@ static inline int sys_csrand_get(void * dst, size_t len)
 {
 #ifdef CONFIG_USERSPACE
 	if (z_syscall_trap()) {
+		/* coverity[OVERRUN] */
 		return (int) arch_syscall_invoke2(*(uintptr_t *)&dst, *(uintptr_t *)&len, K_SYSCALL_SYS_CSRAND_GET);
 	}
 #endif
