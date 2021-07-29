@@ -477,6 +477,10 @@
  status = "disabled";
 };
 / {
+    chosen {
+        zephyr,console = &usbd;
+        zephyr,shell-uart = &usbd;
+    };
     leds {
         compatible = "gpio-leds";
         led0: led_0 {
