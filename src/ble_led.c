@@ -4,9 +4,9 @@
 #include <drivers/gpio.h>
 #include "ble_led.h"
 
-#define LED0_NODE DT_ALIAS(ledb)
-#define LED1_NODE DT_ALIAS(ledg)
-#define LED2_NODE DT_ALIAS(ledr)
+#define LED0_NODE DT_ALIAS(led0)
+#define LED1_NODE DT_ALIAS(led1)
+#define LED2_NODE DT_ALIAS(led2)
 
 #if DT_NODE_HAS_STATUS(LED0_NODE, okay)
 #define LED_B	DT_GPIO_LABEL(LED0_NODE, gpios)

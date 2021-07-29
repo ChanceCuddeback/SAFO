@@ -37,9 +37,3 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/Applications/ARM/bin/arm-none-eabi-objdump")
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/boards/arm/arduino_nano_33_ble/cmake_install.cmake")
-
-endif()
-

@@ -33,8 +33,9 @@
 /Users/chance/Projects/zephyrproject/zephyr/arch/arm/core/aarch32/cortex_m/tz/Kconfig
 /Users/chance/Projects/zephyrproject/zephyr/arch/arm/core/aarch32/mpu/Kconfig
 /Users/chance/Projects/zephyrproject/zephyr/boards/Kconfig
-/Users/chance/Projects/zephyrproject/zephyr/boards/arm/arduino_nano_33_ble/Kconfig.board
-/Users/chance/Projects/zephyrproject/zephyr/boards/arm/arduino_nano_33_ble/Kconfig.defconfig
+/Users/chance/Projects/zephyrproject/zephyr/boards/arm/nrf52840dk_nrf52840/Kconfig
+/Users/chance/Projects/zephyrproject/zephyr/boards/arm/nrf52840dk_nrf52840/Kconfig.board
+/Users/chance/Projects/zephyrproject/zephyr/boards/arm/nrf52840dk_nrf52840/Kconfig.defconfig
 /Users/chance/Projects/zephyrproject/zephyr/boards/shields/adafruit_2_8_tft_touch_v2/Kconfig.defconfig
 /Users/chance/Projects/zephyrproject/zephyr/boards/shields/adafruit_2_8_tft_touch_v2/Kconfig.shield
 /Users/chance/Projects/zephyrproject/zephyr/boards/shields/adafruit_winc1500/Kconfig.defconfig

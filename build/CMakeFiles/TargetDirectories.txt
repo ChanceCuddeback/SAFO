@@ -74,8 +74,6 @@
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/soc/arm/nordic_nrf/nrf52/CMakeFiles/soc__arm__nordic_nrf__nrf52.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/boards/CMakeFiles/rebuild_cache.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/boards/CMakeFiles/edit_cache.dir
-/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/boards/arm/arduino_nano_33_ble/CMakeFiles/rebuild_cache.dir
-/Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/boards/arm/arduino_nano_33_ble/CMakeFiles/edit_cache.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/subsys/CMakeFiles/rebuild_cache.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/subsys/CMakeFiles/edit_cache.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/zephyr/subsys/debug/CMakeFiles/rebuild_cache.dir
@@ -241,6 +239,7 @@
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/modules/openthread/CMakeFiles/edit_cache.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/modules/segger/CMakeFiles/rebuild_cache.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/modules/segger/CMakeFiles/edit_cache.dir
+/Users/chance/Projects/Embedded/Zephyr/SAFO/build/modules/segger/CMakeFiles/modules__segger.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/modules/sof/CMakeFiles/rebuild_cache.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/modules/sof/CMakeFiles/edit_cache.dir
 /Users/chance/Projects/Embedded/Zephyr/SAFO/build/modules/tinycbor/CMakeFiles/rebuild_cache.dir
