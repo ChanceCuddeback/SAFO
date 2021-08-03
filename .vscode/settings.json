@@ -2,6 +2,7 @@
     "C_Cpp.errorSquiggles": "Enabled",
     "files.associations": {
         "device.h": "c",
-        "zephyr.h": "c"
+        "zephyr.h": "c",
+        "conn.h": "c"
     }
 }

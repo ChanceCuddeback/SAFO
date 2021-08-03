@@ -189,6 +189,15 @@
 			sda-pin = < 0x1e >;
 			scl-pin = < 0x1f >;
 		};
+		i2s0: i2s@40025000 {
+			compatible = "nordic,nrf-i2s";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40025000 0x1000 >;
+			interrupts = < 0x25 0x1 >;
+			status = "disabled";
+			label = "I2S_0";
+		};
 		pwm0: pwm@4001c000 {
 			compatible = "nordic,nrf-pwm";
 			reg = < 0x4001c000 0x1000 >;

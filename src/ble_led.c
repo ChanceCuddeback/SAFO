@@ -54,7 +54,7 @@ int config_leds(void)
     b_led = device_get_binding(LED_B);
     g_led = device_get_binding(LED_G);
     r_led = device_get_binding(LED_R);
-    if ((b_led || g_led || r_led ) == NULL) {
+    if (b_led == NULL || g_led == NULL || r_led == NULL) {
         return -1;
     }
 
@@ -73,13 +73,13 @@ void set_led(bool to, RGB_t color)
 
     switch (color) {
         case (BLUE):
-            gpio_pin_set(b_led, PIN_B, (int)!to);
+            gpio_pin_set(b_led, PIN_B, (int)to);
             break;
         case (GREEN):
-            gpio_pin_set(g_led, PIN_G, (int)!to);
+            gpio_pin_set(g_led, PIN_G, (int)to);
             break;
         case (RED):
-            gpio_pin_set(r_led, PIN_R, (int)!to);
+            gpio_pin_set(r_led, PIN_R, (int)to);
             break;
     }
 
